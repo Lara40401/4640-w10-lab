@@ -121,6 +121,7 @@ resource "aws_vpc_security_group_egress_rule" "web-egress" {
 
 module "web_server" {
   source                 = "./modules/web-server"
+  project_name           = local.project_name
   ami                    = data.aws_ami.ansible-nginx.id
   instance_type          = "t3.micro"
   key_name               = "aws-4640"
@@ -136,3 +137,4 @@ output "web_server_id" {
   description = "EC2 instance ID from module"
   value       = module.web_server.instance_id
 }
+
