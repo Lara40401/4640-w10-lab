@@ -124,6 +124,7 @@ module "web_server" {
   project_name           = local.project_name
   ami                    = data.aws_ami.ansible-nginx.id
   instance_type          = "t3.micro"
+# we specified the instance type to "t3.micro" to avoid the error message "The specified instance type is not eligible for Free Tier."
   key_name               = "aws-4640"
   vpc_security_group_ids = [aws_security_group.web.id]
   subnet_id              = aws_subnet.web.id
